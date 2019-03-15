@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ex2</title>
+</head>
+<body>
+    <p id="p1">Está um dia de sol</p>
+    <img src="https://pt.solar-energia.net/uploads/definicio/48/1/sol.jpg" alt="">
+    <p id="p2">Mais um dia a programar!</p> 
+    
+    <script>
+        //b. Altere o texto do parágrafo com id "p1" para "Está um dia de chuva"
+        const p1 = document.querySelector("p#p1")
+        p1.innerHTML = "Está um dia de chuva"
+
+        //c. Altere a imagem existente para uma outra com o seguinte endereço: https://www.altominho.tv/site/wp-content/uploads/2019/02/chuva.jpg
+        const newImg = document.querySelector("img")
+        newImg.src = "https://www.altominho.tv/site/wp-content/uploads/2019/02/chuva.jpg"
+
+        //d. Altere a cor de fundo do segundo parágrafo para amarelo
+        const secondP = document.querySelector("p:nth-of-type(2)")
+        secondP.style.backgroundColor = "yellow"
+
+    </script>
+</body>
+</html>
