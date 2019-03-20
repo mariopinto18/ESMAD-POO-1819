@@ -12,35 +12,34 @@
             name: "David Silva",
             course: "POO",
             grade: 12
-        }    
-
-        // invocar a função
-        listObjProperties() // name, course, grade        
-        removeGrade()
-        listObjProperties() // name, course
-        calcObjectSize()
-
-        // b)
-        function listObjProperties() {
-            for (const prop in student) {            
-                console.log(prop)                
-            }
-        }
-
-        // c)
-        function removeGrade() {
-            delete student.grade
-        }
-
-        // d)
-        function calcObjectSize() {
-            let cont = 0
-            for (const prop in student) {            
-                cont++                
-            }
-            console.log(cont)
         }
         
+        listObjectNames()
+        removePropGrade()
+        listObjectNames()
+        calcObjectSize()
+
+        //b)
+        function listObjectNames() {
+            for (const key in student) {
+                console.log(key)                
+            }    
+        }
+
+        //c)
+        function removePropGrade() {
+            delete student.grade    
+        }
+
+        //d) 
+        function calcObjectSize() {
+            let count = 0
+            for (const key in student) {
+                count++                                
+            }
+            console.log(count)
+        }
+
 
     </script>
 </body>
