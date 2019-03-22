@@ -23,8 +23,9 @@
             }      
         ]
 
-        addNewObject()
-        calcGradesAverage()
+        //addNewObject()
+        //calcGradesAverage()
+        showNamesPositiveGrades()
 
         //b)
         function addNewObject() {
@@ -54,6 +55,17 @@
             }
 
             console.log(sum / grades.length)
+        }
+
+        //d)
+        function showNamesPositiveGrades() {
+            let names = ''
+            for (const obj of grades) {
+                if(obj.grade >= 10) {
+                    names += obj.name + '\n'
+                }                
+            }
+            console.log(names)            
         }
 
 
