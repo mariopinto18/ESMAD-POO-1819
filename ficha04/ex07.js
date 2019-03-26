@@ -81,7 +81,7 @@ function renderTable() {
 function showCoverWindow(cover) {
     const dlgCover = document.querySelector("#dlgCover")
     const imgCover = document.querySelector("#imgCover")
-    imgCover.src = cover
+    imgCover.src = cover 
     dlgCover.showModal()
 }
 
