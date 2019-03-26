@@ -5,18 +5,18 @@ const movies = []
 document.querySelector("#txtYear").max = new Date().getFullYear()
 
 const myForm = document.querySelector("form")
-myForm.addEventListener("submit", function(event) {
+myForm.addEventListener("submit", function (event) {
     // 1. Obter todos os valores dos elementos do formulário
     const newTitle = document.querySelector("#txtTitle").value
     const newGenre = document.querySelector("#sltGenre").value
     const newYear = document.querySelector("#txtTitle").value
     const newCover = document.querySelector("#txtCover").value
-    const newTrailler = document.querySelector("#txtTrailler").value
+    const newTrailer = document.querySelector("#txtTrailer").value
 
     // 2. Verificar se o título do filme inserido já existe no array
     const result = isMovie(newTitle)
 
-    if(result === true) {
+    if (result === true) {
         alert("Filme existente!")
     } else {
         // 3. Criar objeto Movie
@@ -25,7 +25,7 @@ myForm.addEventListener("submit", function(event) {
             genre: newGenre,
             year: newYear,
             cover: newCover,
-            trailler: newTrailler
+            trailer: newTrailer
         }
 
         // 4. Adicionar o o objeto no array
@@ -33,7 +33,7 @@ myForm.addEventListener("submit", function(event) {
         //ou movies[movies.length] = newMovie
 
         // 5. Renderizar a tabela com todos os dados do array
-        renderTable()       
+        renderTable()
     }
 
     // 6. Prevenir que o form seja submetido ao servidor
@@ -43,7 +43,7 @@ myForm.addEventListener("submit", function(event) {
 // Função para verificar se um título existe no array
 function isMovie(newTitle) {
     for (const movie of movies) {
-        if(movie.title === newTitle) {
+        if (movie.title === newTitle) {
             return true
         }
     }
@@ -68,11 +68,11 @@ function renderTable() {
                 <td>${movie.genre}</td>
                 <td>
                     <button onclick="showCoverWindow('${movie.cover}')">VER CAPA</button>
-                    <button>VER TRAILLER</button>
-                    <button>REMOVER</button>
+                    <button onclick="showTrailerWindow('${movie.trailer}')">VER TRAILLER</button>
+                    <button onclick="removeMovie('${movie.title}')">REMOVER</button>
                 </td>
             </tr>
-        `   
+        `
     }
 }
 
@@ -81,13 +81,37 @@ function renderTable() {
 function showCoverWindow(cover) {
     const dlgCover = document.querySelector("#dlgCover")
     const imgCover = document.querySelector("#imgCover")
-    imgCover.src = cover 
+    imgCover.src = cover
     dlgCover.showModal()
 }
 
 // Função para fechar a janela modal da capa do filme
 const btnCloseCoverDialog = document.querySelector("#btnCloseCoverDialog")
-btnCloseCoverDialog.addEventListener("click" , function() {
-    document.querySelector("#dlgCover").close()    
+btnCloseCoverDialog.addEventListener("click", function () {
+    document.querySelector("#dlgCover").close()
 })
 
+// Função para mostrar o trailer do filme numa janela modal
+function showTrailerWindow(trailer) {
+    const dlgTrailer = document.querySelector("#dlgTrailer")
+    const ifrTrailer = document.querySelector("#ifrTrailer")
+    ifrTrailer.src = trailer + "?autoplay=1"
+    dlgTrailer.showModal()
+}
+
+// Função para fechar a janela modal da capa do filme
+const btnCloseTrailerDialog = document.querySelector("#btnCloseTrailerDialog")
+btnCloseTrailerDialog.addEventListener("click", function () {
+    document.querySelector("#dlgTrailer").close()
+})
+
+// Função para remover um objeto movi do array
+function removeMovie(title) {
+    for (let i = 0; i < movies.length; i++) {
+        if (movies[i].title === title) {
+            // Uso do método splice (existem muitas outras alternativas)
+            movies.splice(i, 1);
+        }
+    }
+    renderTable()
+}
