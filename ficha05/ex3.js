@@ -1,87 +1,70 @@
 /**
- * Classe que modela um Carro
+ * Classe que modela um Dado
  */
-class Car {
-    constructor(brand, plate, color, deposit, fuelType) {
-        this.brand = brand
-        this.plate = plate
-        this.color = color
-        this.deposit = deposit
-        this.fuelType = fuelType
+class Dice {
+    constructor() {
+        this.quantity = 6
     }
 
     /**
-     * Updates the car with a given color
-     * @param {string} newColor the new color
+     * Propriedade faceValue
      */
-    updateColor(newColor) {
-        this.color = newColor
+    get faceValue() {
+        return this._faceValue
+    }
+
+    set faceValue(newValue) {
+        this._faceValue = newValue
     }
 
     /**
-     * Refuels the car with a given number of liters
-     * @param {number} liters the number of liters to refuel
+     * Devolve o nº de faces do dado
      */
-    refuel(liters) {
-        this.deposit += liters
+    getQuantityFaces() {
+        return this.quantity
     }
 
     /**
-     * Updates the deposit with the number of liters consumed based on given kms
-     * @param {number} nkms the number of kilometers to drive 
+     * Lança o dado e atibui o valor obtido à propriedade faceValue
      */
-    drive(nkms) {
-        const temp = nkms * 5 /100
-        if(temp > this.deposit) {
-            console.log("You cannot drive for that destination!")
-        } else {
-            this.deposit -= nkms * 5 /100
-            console.log("Good trip!")
-        }        
+    roll() {
+        const randomValue = Math.floor(Math.random() * this.quantity) + 1
+        this.faceValue = randomValue
     }
-
-
-
 }
 
 
 
 
-// Criar três instâncias da class Car
-const car1 = new Car("Ford", "91-GH-15", "verde", 40, "Gasóleo")
-const car2 = new Car("Opel", "23-AB-23", "branco", 50, "Gasolina")
-const car3 = new Car("Nissan", "12-CX-45", "preto", 22, "Gasóleo")
+// Definir a tabela de frequência
+const frequencyTable = [0,0,0,0,0,0]
 
-// Adiciona os 3 objetos criados a um array
-const cars = []
-cars.push(car1, car2, car3)
-
-/**
- * Function that counts the number of cars of a given brand
- * @param {string} brand the name of the brand
- * @returns {number} the number of cars of a given brand 
- */
-function getCarsNumberByBrand(brand) {
-    let cont = 0
-    for (const car of cars) {
-        if(car.brand === brand) {
-            cont++
-        }        
-    }
-    return cont
+// Lançar o dado 100 vezes
+for (let i = 0; i < 100; i++) {
+    const dice = new Dice()
+    dice.roll()
+    const currentValue = dice.faceValue
+    frequencyTable[currentValue - 1] += 1
 }
 
-/**
- * Function that sums all the liters available in the depositis of cars of with a given fuel type
- * @param {string} fuelType the name of the fuel type
- * @returns {number} the sum of the deposits of all the cars that have a given fuel type 
- */
-function calcSumDepositByFuelType(fuelType) {
-    let sum = 0
-    for (const car of cars) {
-        if(car.fuelType === fuelType) {
-            sum += car.deposit
-        }        
-    }
-    return sum
-}
+// Mostrar o resultado na consola (debugging)
+console.table(frequencyTable)
+
+const table = document.querySelector("table")
+
+table.innerHTML += `
+        <tr>
+            <td>Frequência</td>
+            <td>${frequencyTable[0]}</td>
+            <td>${frequencyTable[1]}</td>
+            <td>${frequencyTable[2]}</td>
+            <td>${frequencyTable[3]}</td>
+            <td>${frequencyTable[4]}</td>
+            <td>${frequencyTable[5]}</td>
+        </tr>
+    `
+
+
+
+
+
