@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>MyMusic</title>
+    <title>Band</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
         <a class="navbar-brand" href="../index.html">MyMusic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -22,7 +21,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="html/addBand.html">Add band</a>
+                    <a class="nav-link" href="#">Add band</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -31,43 +30,26 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-3">Bands Catalog</h1>
-                <p class="lead">
-                    The best bands of the world!
-                </p>
-                <hr class="my-2">
+        <div class="jumbotron">
+            <h1 id="bandName" class="display-3"></h1>
+            <p id="bandGenre" class="lead">Jumbo helper text</p>
+            <hr class="my-2">
+            <div class="row">
+                <div class="col-sm6">
+                    <img id="bandPhoto" src="" alt="">
+                </div>
+                <div id="bandVideo" class="col-sm6">
 
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="sltGenre">Genre: </label>
-                        <select class="form-control m-2" name="" id="sltGenre">
-                            <option value="">All</option>
-                            <option value="Pop-Rock">Pop-Rock</option>
-                            <option value="Metal">Metal</option>
-                            <option value="Jazz">Jazz</option>
-                        </select>
-                    </div>
-                    <div class="form-group m-2">
-                        <label for="txtBand">Band's name:</label>
-                        <input id="txtBand" type="text" class="form-control m-2">
-                    </div>
-                    <button id="btnFilter" type="button" class="btn btn-primary">FILTER</button>
-                    <button id="btnSort" type="button" class="btn btn-primary m-2">SORT</button>
-                </form>
-                <hr class="my-2">
-                <p id="myCatalog"></p>
-
-
-
+                </div>
             </div>
+            <p id="bandDescription"></p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="../index.html">back</a>
+            </p>
         </div>
-
     </div>
     <!-- Optional JavaScript -->
-    <script type="module" src="js/controllers/index.js"></script>
-
+    <script type="module" src="../js/controllers/band.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
