@@ -2,8 +2,8 @@
  * Classe que modela um utilizador
  */
 export default class User {
-    constructor(username, pass) {
+    constructor(username, password) {
         this.username = username
-        this.pass = pass
+        this.password = password
     }
 }

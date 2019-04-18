@@ -1,6 +1,6 @@
 import {
     getCurrentBand
-} from "../models/main.js"
+} from "../controllers/bandController.js"
 
 const band = getCurrentBand()
 

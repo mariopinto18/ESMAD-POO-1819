@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Band</title>
+    <title>Add band</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,22 +17,45 @@
     </nav>
     <div class="container-fluid">
         <div class="jumbotron">
-            <h1 id="bandName" class="display-3"></h1>
-            <p id="bandGenre" class="lead">Jumbo helper text</p>
+            <h1 class="display-3">New band</h1>
+            <p class="lead">Add a band that you enjoy!</p>
             <hr class="my-2">
-            <div class="row">
-                <div class="col-sm6">
-                    <img id="bandPhoto" src="" alt="">
-                </div>
-                <div id="bandVideo" class="col-sm6">
+            <p>
+                <form id="frmAddBand">
+                    <div class="form-group">
+                        <label for="txtName">Name</label>
+                        <input type="text" class="form-control" id="txtName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-3">
+                            <label for="sltGenre">Genre</label>
+                            <select class="form-control" id="sltGenre">
+                                <option value="Jazz">Jazz</option>
+                                <option value="Metal">Metal</option>
+                                <option value="Pop-Rock">Pop-Rock</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescription">Description</label>
+                        <textarea class="form-control" id="txtDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPhoto">Photo link</label>
+                        <input type="url" class="form-control" id="txtPhoto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtVideo">Video Clip link</label>
+                        <input type="url" class="form-control" id="txtVideo">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                </form>
 
-                </div>
-            </div>
-            <p id="bandDescription"></p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="../index.html">back</a>
             </p>
+
         </div>
+
     </div>
 
     <!-- Modal de login -->
@@ -108,7 +131,7 @@
     </div>
     <!-- Optional JavaScript -->
     <script type="module" src="../js/views/navbarView.js"></script>
-    <script type="module" src="../js/views/bandView.js"></script>
+    <script type="module" src="../js/views/newBandView.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

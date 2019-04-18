@@ -1,18 +1,4 @@
-import User from "./user.js"
-import Band from "./band.js"
-
-// Define um array para guardar os objetos User
-export const users = []
-// Caso já exista uma chave users na LocalStorage é carregado tudo para o array
-// Caso contrário são guardadas no array, vários objetos User inseridos manualmente
-if (localStorage.users) {
-    users = JSON.parse(localStorage.users)
-} else {
-    const user1 = new User("Ricardo", "12345")
-    const user2 = new User("Maria", "54321")
-    const user3 = new User("Pedro", "15243")
-    users.push(user1, user2, user3)
-}
+import Band from "../models/bandModel.js"
 
 // Define um array para guardar os objetos Band
 export let bands = []
@@ -80,7 +66,7 @@ export function removeBand(txtName) {
  */
 export function setCurrentBand(txtName) {
     localStorage.setItem("band", txtName)
-    location.href = "/ficha06/html/band.html"
+    location.href = "html/band.html"
 }
 
 /**

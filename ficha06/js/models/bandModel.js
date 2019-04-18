@@ -9,7 +9,7 @@ export default class Band {
         this.desc = desc
         this.music = music
     }
-
+    // Compara duas bandas pelo seu nome. Faz uma ordenação alfabética crescente
     static compare(bandA, bandB) {
         if (bandA.name < bandB.name)
             return -1;

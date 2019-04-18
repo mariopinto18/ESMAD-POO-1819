@@ -3,30 +3,14 @@ import {
     removeBand,
     setCurrentBand,
     sortBands
-} from "../models/main.js"
+} from "../controllers/bandController.js"
 
-const myCatalog = document.querySelector("#myCatalog")
-const btnFilter = document.querySelector("#btnFilter")
-const btnSort = document.querySelector("#btnSort")
 
-// Clique no botão de filtro
-btnFilter.addEventListener("click", function () {
-    const txtBand = document.querySelector("#txtBand").value
-    const sltGenre = document.querySelector("#sltGenre").value
-    // Chama a função responsável pela exibição do catálogo com os filtros respetivos
-    renderCatalog(txtBand, sltGenre)
-})
 
-// Clique no botão de ordenação
-btnSort.addEventListener("click", function () {
-    sortBands()
-    renderCatalog()
-})
 
 // Chamada da função responsável pela exibição do catálogo
 // Por emissão, não passa qualquer filtro, ou seja, são exibidas todas as bandas 
 renderCatalog()
-
 
 /**
  * Função que exibe o catálogo mediante um conjunto de filtros opcionais
@@ -34,7 +18,7 @@ renderCatalog()
  * @param {string} filterGenre Filtro para o género de música tocado pela banda
  */
 function renderCatalog(filterName = "", filterGenre = "") {
-
+    const myCatalog = document.querySelector("#myCatalog")
     let result = ""
     let i = 0
     for (const band of bands) {
@@ -57,7 +41,12 @@ function renderCatalog(filterName = "", filterGenre = "") {
                     <h5 class="card-title">${band.name}</h5>
                     <p class="card-text">${band.genre}</p>
                     <button id="${band.name}" class="btn btn-primary view">Ver mais</button>
-                    <button id="${band.name}" class="btn btn-danger remove">Remover</button>                    
+        `
+        // Só adiciona botão de "Remover" a um utilizador autenticado
+        if (sessionStorage.getItem("loggedUser")) {
+            result += `<button id="${band.name}" class="btn btn-danger remove">Remover</button>`
+        }
+        result += ` 
                 </div>
             </div>
         </div>
@@ -88,3 +77,17 @@ function renderCatalog(filterName = "", filterGenre = "") {
         })
     }
 }
+
+// Clique no botão de filtro
+document.querySelector("#btnFilter").addEventListener("click", function () {
+    const txtBand = document.querySelector("#txtBand").value
+    const sltGenre = document.querySelector("#sltGenre").value
+    // Chama a função responsável pela exibição do catálogo com os filtros respetivos
+    renderCatalog(txtBand, sltGenre)
+})
+
+// Clique no botão de ordenação
+document.querySelector("#btnSort").addEventListener("click", function () {
+    sortBands()
+    renderCatalog()
+})

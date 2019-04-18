@@ -1,6 +1,6 @@
 import {
     addBand
-} from "../models/main.js"
+} from "../controllers/bandController.js"
 
 // Clique no botão de filtro
 document.querySelector("#frmAddBand").addEventListener("submit", function (event) {
